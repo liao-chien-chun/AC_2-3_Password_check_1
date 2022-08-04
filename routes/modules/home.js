@@ -10,7 +10,14 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  
+  const { email, password } = req.body
+  User.findOne({ email: email, password: password })
+    .then(user => {
+      if (!user) {
+        return res.render('index', { text: '郵件或密碼錯誤' })
+      }
+      res.render('user', { user: user.firstName })
+    })
 })
 
 //匯出
