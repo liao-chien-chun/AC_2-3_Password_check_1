@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 
+require('./config/mongoose')  //引用mongoose連線設定
 
 const app = express()
 const port = 3000
